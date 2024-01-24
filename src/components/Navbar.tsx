@@ -6,8 +6,8 @@ import {
   Navbar as NavbarBs,
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import logo from "../../public/assets/logo.png";
-import shoppingCart from "../../public/assets/shopping-cart.png";
+import logo from "/assets/logo.png";
+import shoppingCart from "/assets/shopping-cart.png";
 
 export default function Navbar() {
   return (
