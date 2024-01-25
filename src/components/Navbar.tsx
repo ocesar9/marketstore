@@ -8,8 +8,10 @@ import {
 import { NavLink } from "react-router-dom";
 import logo from "/assets/logo.png";
 import shoppingCart from "/assets/shopping-cart.png";
+import { useShoppingCart } from "../content/ShoppingCartContext";
 
 export default function Navbar() {
+  const {openCart,cartQuantity} = useShoppingCart();
   return (
     <NavbarBs sticky="top" className="bg-dark mb-3 p-2">
       <Container className="p-1">
@@ -37,15 +39,21 @@ export default function Navbar() {
             background: "none",
             position: "relative",
           }}
+          onClick={() => openCart()}
         >
           <img
             src={shoppingCart}
             alt="Shopping Cart"
             style={{ width: "24px", height: "24px"}}
           />
-          <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center" style={{color:"white", width:"1.5rem", height:"1.5rem", position: "absolute", right:"0", bottom:"0", transform:"translate(55%,55%"}}>
-            3
+          {cartQuantity > 0 ?
+          
+          <div className="rounded-circle d-flex justify-content-center align-items-center" style={{fontWeight: "700", background:"#fff", color:"#923af4", width:"1.5rem", height:"1.5rem", position: "absolute", right:"0", bottom:"0", transform:"translate(55%,55%"}}>
+            {cartQuantity}
           </div>
+
+          : null
+        }
         </Button>
       </Container>
     </NavbarBs>

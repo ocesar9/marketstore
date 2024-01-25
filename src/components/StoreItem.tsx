@@ -1,5 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 import { formatCurrency } from "../utils/formatCurrency";
+import { useShoppingCart } from "../content/ShoppingCartContext";
 
 type StoreItemProps = {
   id?: number;
@@ -8,8 +9,14 @@ type StoreItemProps = {
   imgUrl: string;
 };
 
-export default function StoreItem({ name, price, imgUrl }: StoreItemProps) {
-  const quantity = 1;
+export default function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+  const quantity = getItemQuantity(id);
   return (
     <Card className="h-100">
       <Card.Img
@@ -32,6 +39,7 @@ export default function StoreItem({ name, price, imgUrl }: StoreItemProps) {
                 border: "none",
                 fontWeight: "bolder",
               }}
+              onClick={() => increaseCartQuantity(id)}
             >
               + Add to Cart
             </Button>
@@ -41,14 +49,36 @@ export default function StoreItem({ name, price, imgUrl }: StoreItemProps) {
                 className="d-flex align-items-center justify-content-center"
                 style={{ gap: ".5rem" }}
               >
-                <Button className="rounded-circle" style={{background:"#923af4", border: "none",height:"2.5rem",width:"2.5rem",fontSize: "18px",fontWeight: "600"}}>
+                <Button
+                  className="rounded-circle"
+                  style={{
+                    background: "#923af4",
+                    border: "none",
+                    height: "2.5rem",
+                    width: "2.5rem",
+                    fontSize: "18px",
+                    fontWeight: "600",
+                  }}
+                  onClick={() => increaseCartQuantity(id)}
+                >
                   +
                 </Button>
                 <div className="d-flex align-items-end gap-2">
                   <p className="fs-4 mb-0">{quantity}</p>
                   <span className="fs-5 font-weight-bold">in Cart</span>
                 </div>
-                <Button  className="rounded-circle" style={{background:"#923af4", border: "none", height:"2.5rem",width:"2.5rem",fontSize: "18px",fontWeight: "600"}}>
+                <Button
+                  className="rounded-circle"
+                  style={{
+                    background: "#923af4",
+                    border: "none",
+                    height: "2.5rem",
+                    width: "2.5rem",
+                    fontSize: "18px",
+                    fontWeight: "600",
+                  }}
+                  onClick={() => decreaseCartQuantity(id)}
+                >
                   -
                 </Button>
               </div>
@@ -59,6 +89,7 @@ export default function StoreItem({ name, price, imgUrl }: StoreItemProps) {
                   margin: "0",
                   background: "none",
                 }}
+                onClick={() => removeFromCart(id)}
               >
                 <span
                   className="text-secondary text-decoration-underline"

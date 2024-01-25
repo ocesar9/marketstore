@@ -20,6 +20,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.png",  // Add the image file extension if necessary
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
