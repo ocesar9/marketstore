@@ -44,10 +44,10 @@ export function CartItem({ id, quantity }: CartItemProps) {
           margin: "0",
           background: "none",
           color: "red",
-          height: "2rem",
-          width: "2rem",
-          fontSize: "17px",
-          fontWeight: "600",
+          height: "2.3rem",
+          width: "2.3rem",
+          fontSize: "18px",
+          fontWeight: "700",
           border: "2px solid red",
         }}
         onClick={() => removeFromCart(id)}
