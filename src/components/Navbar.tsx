@@ -1,6 +1,5 @@
 import {
   Button,
-  Card,
   Container,
   Nav,
   Navbar as NavbarBs,
@@ -20,15 +19,15 @@ export default function Navbar() {
             <img
               src={logo}
               alt="MarketStore Logo"
-              style={{ width: "24px", height: "24px" }}
+              style={{ width: "36px", height: "36px" }}
             />
-            <Card.Title>MarketStore</Card.Title>
+            <span className="fs-4" style={{fontWeight:"600"}}>MarketStore</span>
           </Nav.Link>
           <Nav.Link to="/store" as={NavLink} className="text-white">
-            <Card.Title>Store</Card.Title>
+            <span className="fs-4" style={{fontWeight:"600"}}>Store</span>
           </Nav.Link>
           <Nav.Link to="/about" as={NavLink} className="text-white">
-            <Card.Title>About</Card.Title>
+            <span className="fs-4" style={{fontWeight:"600"}}>About</span>
           </Nav.Link>
         </Nav>
         <Button
@@ -44,7 +43,7 @@ export default function Navbar() {
           <img
             src={shoppingCart}
             alt="Shopping Cart"
-            style={{ width: "24px", height: "24px" }}
+            style={{ width: "32px", height: "32px" }}
           />
           {cartQuantity > 0 ? (
             <div
