@@ -1,6 +1,8 @@
 import { Button, Card } from "react-bootstrap";
 import { formatCurrency } from "../utils/formatCurrency";
 import { useShoppingCart } from "../content/ShoppingCartContext";
+import addIcon from "/assets/add.png";
+import removeIcon from "/assets/remove.png";
 
 type StoreItemProps = {
   id?: number;
@@ -33,7 +35,7 @@ export default function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
         <div className="mt-auto">
           {quantity === 0 ? (
             <Button
-              className="w-100"
+              className="d-flex w-100 justify-content-center align-items-center gap-2"
               style={{
                 background: "#923af4",
                 border: "none",
@@ -41,7 +43,12 @@ export default function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
               }}
               onClick={() => increaseCartQuantity(id)}
             >
-              + Add to Cart
+              <img
+                src={addIcon}
+                alt="add"
+                style={{ width: "14px", height: "14px" }}
+              />
+              Add to Cart
             </Button>
           ) : (
             <div className="d-flex align-items-center flex-column">
@@ -50,36 +57,40 @@ export default function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
                 style={{ gap: ".5rem" }}
               >
                 <Button
-                  className="rounded-circle"
+                  className="d-flex align-items-center justify-content-center rounded-circle"
                   style={{
                     background: "#923af4",
                     border: "none",
                     height: "2.5rem",
                     width: "2.5rem",
-                    fontSize: "18px",
-                    fontWeight: "600",
                   }}
                   onClick={() => increaseCartQuantity(id)}
                 >
-                  +
+                  <img
+                    src={addIcon}
+                    alt="add"
+                    style={{ width: "14px", height: "14px" }}
+                  />
                 </Button>
                 <div className="d-flex align-items-end gap-2">
                   <p className="fs-4 mb-0">{quantity}</p>
                   <span className="fs-5 font-weight-bold">in Cart</span>
                 </div>
                 <Button
-                  className="rounded-circle"
+                  className="d-flex align-items-center justify-content-center rounded-circle"
                   style={{
                     background: "#923af4",
                     border: "none",
                     height: "2.5rem",
                     width: "2.5rem",
-                    fontSize: "18px",
-                    fontWeight: "600",
                   }}
                   onClick={() => decreaseCartQuantity(id)}
                 >
-                  -
+                  <img
+                    src={removeIcon}
+                    alt="add"
+                    style={{ width: "14px", height: "14px" }}
+                  />
                 </Button>
               </div>
               <Button

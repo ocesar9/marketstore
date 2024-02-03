@@ -10,11 +10,12 @@ import Register from "./pages/Register";
 import "./global.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+import Payment from "./pages/Payment";
 
 export default function App() {  
   return (
     <>
-      <ShoppingCartProvider>
+     <ShoppingCartProvider>
           <Navbar />
           <Container className="mb-4">
             <Routes>
@@ -22,6 +23,7 @@ export default function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/store" element={<Store />} />
               <Route path="/about" element={<About />} />
+              <Route path="/payment" element={<Payment />} />
             </Routes>
           </Container>
         </ShoppingCartProvider>

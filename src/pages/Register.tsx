@@ -15,7 +15,7 @@ export default function Register() {
   const password1 = useForm("password");
   const match = useMatch(password1);
 
-  const {request} = useFetch();
+  const {request,error} = useFetch();
   const navigate = useNavigate();
   
   async function handleSubmit (event:Event) {
@@ -28,10 +28,13 @@ export default function Register() {
         email: email.value,
         password: password1.value
       })
-      const {response} = await request(url,options);
+
+      const {response, json} = await request(url,options);
       if(response?.ok === true){
-        toast.success('User created successfully!')
+        toast.success(json.message);
         navigate('/');
+      }else {
+        toast.error(error);
       }
     }
   }

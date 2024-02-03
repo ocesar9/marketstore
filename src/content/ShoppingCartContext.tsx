@@ -11,7 +11,13 @@ type CartItem = {
   quantity: number;
 };
 
+type User = {
+  email: string;
+  password: string;
+}
+
 type ShoppingCartContext = {
+  saveUser: (email, password) => void;
   openCart: () => void;
   closeCart: () => void;
   getItemQuantity: (id: number) => number;
@@ -20,6 +26,7 @@ type ShoppingCartContext = {
   removeFromCart: (id: number) => void;
   cartQuantity: number;
   cartItems: CartItem[];
+  user: User;
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -30,10 +37,11 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useLocalStorage<User>('user',['']);
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
     "shopping-cart",
     []
-  )
+  );
   const cartQuantity = cartItems.reduce(
     (quantity, item) => item.quantity + quantity,
     0
@@ -41,6 +49,12 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
+
+  const saveUser = (email, password) => {
+    setUser(() => {
+      return {email: email, password: password}
+    })
+  }
 
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
@@ -84,6 +98,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   return (
     <ShoppingCartContext.Provider
       value={{
+        user,
+        saveUser,
         getItemQuantity,
         increaseCartQuantity,
         decreaseCartQuantity,
@@ -91,11 +107,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         cartItems,
         cartQuantity,
         openCart,
-        closeCart
+        closeCart,
       }}
     >
       {children}
-     <ShoppingCart isOpen={isOpen}/> 
+      <ShoppingCart isOpen={isOpen} />
     </ShoppingCartContext.Provider>
   );
 }

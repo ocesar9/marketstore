@@ -18,3 +18,8 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
 
   return [value, setValue] as [typeof value, typeof setValue]
 }
+
+export function removeLocalStorage(key: string) {
+    localStorage.removeItem(key);
+    return true;
+}

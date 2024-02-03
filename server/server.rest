@@ -6,8 +6,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {  
-    "email":"juliocesaoguimaraes@gmail.com",
-    "password":"120083matueBMTh"
+    "email":"jcog@discente.ifpe.edu.br",
+    "password":"120083matueBMTH"
 }
 
 ###
@@ -15,8 +15,8 @@ POST http://localhost:3000/users/login
 Content-Type:  application/json
 
 {  
-    "email":"juliocesaoguimaraes@gmail.com",
-    "password":"120083matueBMTh"
+    "email":"jcog@discente.ifpe.edu.br",
+    "password":"120083matueBMTH"
 }
 
 ###

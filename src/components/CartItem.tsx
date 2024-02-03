@@ -3,7 +3,7 @@ import { useShoppingCart } from "../content/ShoppingCartContext";
 import storeItems from "../data/items.json";
 import { formatCurrency } from "../utils/formatCurrency";
 
-type CartItemProps = {
+export type CartItemProps = {
   id: number;
   quantity: number;
 };
