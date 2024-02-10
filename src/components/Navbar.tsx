@@ -49,15 +49,15 @@ export default function Navbar() {
             <img
               src={shoppingCartIcon}
               alt="Shopping Cart"
-              style={{ width: "32px", height: "32px" }}
+              style={{ width: "36px", height: "36px" }}
             />
             {cartQuantity > 0 ? (
               <div
                 className="rounded-circle d-flex justify-content-center align-items-center"
                 style={{
                   fontWeight: "700",
-                  background: "#fff",
-                  color: "#923af4",
+                  background: "#923af4",
+                  color: "#fff",
                   width: "1.5rem",
                   height: "1.5rem",
                   position: "absolute",

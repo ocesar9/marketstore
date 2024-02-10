@@ -45,7 +45,7 @@ export default function Login() {
   }
 
   return (
-    <div className="d-flex flex-column gap-3 vh-100 align-items-center justify-content-center">
+    <div className="d-flex flex-column gap-3 align-items-center justify-content-center" style={{height:"80vh"}}>
       <div className="d-flex align-items-center gap-1">
         <img src={logo} alt="" style={{ width: "64px", height: "64px" }} />
         <span className="fs-1" style={{ fontWeight: "700" }}>

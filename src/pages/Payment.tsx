@@ -3,11 +3,37 @@ import { useShoppingCart } from "../content/ShoppingCartContext";
 import { CartItem } from "../components/CartItem";
 import storeItems from "../data/items.json";
 import { formatCurrency } from "../utils/formatCurrency";
+import useFetch from "../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
+import { SEND_MAIl } from "../Api";
+import {EmailTemplate} from "../templates/EmailTemplate";
+import { CartItemTemplate } from "../templates/CartItemTemplate";
+import { toast } from "react-toastify";
+import { removeLocalStorage } from "../hooks/useLocalStorage";
+
 
 export default function Payment() {
   const { cartItems, user } = useShoppingCart();
+  const { request, error } = useFetch();
+  const navigate = useNavigate();
+  let mail = EmailTemplate();
 
-  function handleSendEmail() {}
+
+  async function handleSendEmail() {
+    const {url, options} = SEND_MAIl({
+      emailFrom: "marketstore@resend.dev",
+      emailTo: user.email,
+      subject: "Check all your shopping cart items",
+      html: mail,
+    })
+    const {response, json} = await request(url,options);
+    if (response?.ok === true ) {
+      removeLocalStorage('shopping-cart');
+      toast.success("Check your MarketStore Order Summary on the email");
+      navigate('/');
+    }
+
+  }
 
   return (
     <>
@@ -23,7 +49,7 @@ export default function Payment() {
               </Col>
             ))}
           </Row>
-          <div className="d-flex flex-column ms-auto fw-bold fs-5 justify-content-end gap-3">
+          <div className="d-flex flex-column ms-auto fw-bold fs-5 justify-content-end align-items-end gap-3">
             <div className="d-flex justify-content-end gap-1">
               <span>Total:</span>
               {formatCurrency(
@@ -42,10 +68,9 @@ export default function Payment() {
               }}
               onClick={handleSendEmail}
             >
-              Send me payment email
+              Close purchase
             </Button>
           </div>
-          <div></div>
         </div>
       ) : (
         <div className="d-flex flex-column align-items-center">

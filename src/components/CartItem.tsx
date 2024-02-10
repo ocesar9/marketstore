@@ -26,15 +26,21 @@ export function CartItem({ id, quantity }: CartItemProps) {
         }}
       />
       <div className="me-auto">
-        <div>
-          {item.name}{" "}
-          {quantity > 1 ? (
+        <div>{item.name}</div>
+        {quantity > 1 ? (
+          <div
+            className="text-muted"
+            style={{
+              display: "flex",
+              fontSize: "0.75rem",
+              gap: "6px",
+              alignItems: "end",
+            }}
+          >
+            <span>{formatCurrency(item.price)}</span>
             <span style={{ fontSize: "0.65rem" }}>x{quantity}</span>
-          ) : null}
-        </div>
-        <div className="text-muted" style={{ fontSize: "0.75rem" }}>
-          {formatCurrency(item.price)}
-        </div>
+          </div>
+        ) : null}
 
         <div>{formatCurrency(item.price * quantity)}</div>
       </div>

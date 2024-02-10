@@ -24,7 +24,7 @@
     "src",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.png", "emails",  // Add the image file extension if necessary
+    "src/**/*.png", "emails", "server/templates",  // Add the image file extension if necessary
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
