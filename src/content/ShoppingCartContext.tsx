@@ -20,6 +20,7 @@ type ShoppingCartContext = {
   saveUser: (email, password) => void;
   openCart: () => void;
   closeCart: () => void;
+  resetCart: () => void;
   getItemQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
@@ -54,6 +55,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     setUser(() => {
       return {email: email, password: password}
     })
+  }
+
+  const resetCart = () => {
+    setCartItems([]);
   }
 
   function getItemQuantity(id: number) {
@@ -108,6 +113,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         cartQuantity,
         openCart,
         closeCart,
+        resetCart
       }}
     >
       {children}

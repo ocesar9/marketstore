@@ -69,9 +69,6 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
               Keep Buying
             </Button>
           </div>
-          <div>
-            <Button></Button>
-          </div>
         </Stack>
       </Offcanvas.Body>
     </Offcanvas>

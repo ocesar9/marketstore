@@ -13,10 +13,10 @@ import { removeLocalStorage } from "../hooks/useLocalStorage";
 
 
 export default function Payment() {
-  const { cartItems, user } = useShoppingCart();
+  const { cartItems,resetCart, user } = useShoppingCart();
   const { request, error } = useFetch();
   const navigate = useNavigate();
-  let mail = EmailTemplate();
+  const mail = EmailTemplate();
 
 
   async function handleSendEmail() {
@@ -26,11 +26,14 @@ export default function Payment() {
       subject: "Check all your shopping cart items",
       html: mail,
     })
-    const {response, json} = await request(url,options);
+    const {response} = await request(url,options);
     if (response?.ok === true ) {
+      resetCart();
       removeLocalStorage('shopping-cart');
       toast.success("Check your MarketStore Order Summary on the email");
       navigate('/');
+    }else {
+      toast.error(error);
     }
 
   }

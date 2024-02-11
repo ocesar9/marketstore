@@ -23,7 +23,7 @@ export const CartItemTemplate = ({ id, quantity }: CartItemProps) => {
       <div style={{ flex: 1 }}>
         <Text style={{margin:0}}>{item.name}</Text>
         {quantity > 1 && (
-          <div>
+          <div style={{display:"flex"}}>
             <Text style={{margin:0}}>{formatCurrency(item.price)}</Text>
             <Text style={{margin:0}}>x{quantity}</Text>
           </div>
