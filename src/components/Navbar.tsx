@@ -1,7 +1,5 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import logoIcon from "/assets/logo.png";
-import shoppingCartIcon from "/assets/shopping-cart.png";
 import { useShoppingCart } from "../content/ShoppingCartContext";
 
 export default function Navbar() {
@@ -12,7 +10,7 @@ export default function Navbar() {
         <Nav>
             <Nav.Link to="/" as={NavLink} className="d-flex text-white gap-2">
               <img
-                src={logoIcon}
+                src="/assets/logo.png"
                 alt="MarketStore Logo"
                 style={{ width: "36px", height: "36px" }}
               />
@@ -20,7 +18,7 @@ export default function Navbar() {
                 MarketStore
               </span>
             </Nav.Link>
-          {user.email !== undefined && user.password !== undefined ? (
+          {user.email !== "" && user.password !== "" ? (
             <>
               <Nav.Link to="/store" as={NavLink} className="text-white">
                 <span className="fs-4" style={{ fontWeight: "600" }}>
@@ -35,7 +33,7 @@ export default function Navbar() {
             </>
           ) : null}
         </Nav>
-        {user.email !== undefined && user.password !== undefined ? (
+        {user.email !== "" && user.password !== "" ? (
           <Button
             style={{
               border: "none",
@@ -47,7 +45,7 @@ export default function Navbar() {
             onClick={() => openCart()}
           >
             <img
-              src={shoppingCartIcon}
+              src="/assets/shopping-cart.png"
               alt="Shopping Cart"
               style={{ width: "36px", height: "36px" }}
             />

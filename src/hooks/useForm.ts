@@ -1,6 +1,11 @@
 import React from "react";
 
-const types = {
+type FormType = {
+  regex: RegExp;
+  message: string;
+};
+
+const types : { [key: string]: FormType } = {
   email: {
     regex:
       /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, //eslint-disable-line
@@ -13,11 +18,12 @@ const types = {
   },
 };
 
-const useForm = (type) => {
+const useForm = (type : string | false) => {
   const [value, setValue] = React.useState("");
-  const [error, setError] = React.useState(null);
+  const [error, setError] = React.useState<string | null>(null);
 
-  function validate(value) {
+
+  const validate = (value: string): boolean => {
     if (type === false) return true;
     if (value.length === 0) {
       setError("Fill in a value!");
@@ -31,7 +37,7 @@ const useForm = (type) => {
     }
   }
 
-  function onChange({ target }) {
+  const onChange = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
     if (error) validate(target.value);
     setValue(target.value);
   }

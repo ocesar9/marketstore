@@ -1,6 +1,5 @@
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "/assets/logo.png";
 import useForm from "../hooks/useForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
@@ -9,6 +8,7 @@ import useFetch from "../hooks/useFetch";
 import { toast } from "react-toastify";
 import { useShoppingCart } from "../content/ShoppingCartContext";
 import { removeLocalStorage } from "../hooks/useLocalStorage";
+import { FormEvent } from "react";
 
 export default function Login() {
   const { user, saveUser } = useShoppingCart();
@@ -19,7 +19,7 @@ export default function Login() {
   const { request, error } = useFetch();
   const navigate = useNavigate();
 
-  async function handleSubmit(event: Event) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     email.onBlur();
     if (email.error === null) {
@@ -47,12 +47,12 @@ export default function Login() {
   return (
     <div className="d-flex flex-column gap-3 align-items-center justify-content-center" style={{height:"80vh"}}>
       <div className="d-flex align-items-center gap-1">
-        <img src={logo} alt="" style={{ width: "64px", height: "64px" }} />
+        <img src="/assets/logo.png" alt="" style={{ width: "64px", height: "64px" }} />
         <span className="fs-1" style={{ fontWeight: "700" }}>
           MarketStore
         </span>
       </div>
-      {user.email !== undefined && user.password !== undefined ?   
+      {user.email !== "" && user.password !== "" ?   
       <>
       <div className="d-flex flex-column fs-5 align-items-center" style={{ fontWeight: "700" }}>
         Welcome Back! <br/> 

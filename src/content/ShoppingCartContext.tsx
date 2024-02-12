@@ -14,10 +14,10 @@ export type CartItem = {
 type User = {
   email: string;
   password: string;
-}
+};
 
 type ShoppingCartContext = {
-  saveUser: (email, password) => void;
+  saveUser: (email: string, password: string) => void;
   openCart: () => void;
   closeCart: () => void;
   resetCart: () => void;
@@ -38,7 +38,10 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useLocalStorage<User>('user',['']);
+  const [user, setUser] = useLocalStorage<User>("user", {
+    email: "",
+    password: "",
+  });
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
     "shopping-cart",
     []
@@ -51,15 +54,15 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
 
-  const saveUser = (email, password) => {
+  const saveUser = (email: string, password: string) => {
     setUser(() => {
-      return {email: email, password: password}
-    })
-  }
+      return { email: email, password: password };
+    });
+  };
 
   const resetCart = () => {
     setCartItems([]);
-  }
+  };
 
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
@@ -113,7 +116,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         cartQuantity,
         openCart,
         closeCart,
-        resetCart
+        resetCart,
       }}
     >
       {children}

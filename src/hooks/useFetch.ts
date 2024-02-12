@@ -5,7 +5,7 @@ const useFetch = () => {
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
-  const request = React.useCallback(async (url, options) => {
+  const request = React.useCallback(async (url:string, options:object) => {
     let response;
     let json;
     try {
@@ -14,14 +14,16 @@ const useFetch = () => {
       response = await fetch(url, options);
       json = await response.json();
       if (response.ok === false) throw new Error(json.message);
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    }  catch (error: any) {
       json = null;
       setError(error.message);
-    } finally {
+  } finally {
       setData(json);
       setLoading(false);
-      return { response, json };
     }
+
+    return { response, json };
   }, []);
 
   return {

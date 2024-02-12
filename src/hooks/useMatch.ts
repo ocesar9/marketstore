@@ -1,16 +1,18 @@
 import React from "react";
 
-const useMatch = (password1) => {
-  const [password2,setPassword2] = React.useState('');
+
+
+const useMatch = (password1:string) => {
+  const [password2,setPassword2] = React.useState<string>('');
   const [match, setMatch] = React.useState<boolean>(false);
-  const [matchError, setMatchError] = React.useState(null);
+  const [matchError, setMatchError] = React.useState<string | null>(null);
 
   function validate() {
     if (password2.length === 0) {
       setMatchError("Fill in a password confirmation value!");
       setMatch(false);
       return false;
-    } else if (password1.value !== password2) {
+    } else if (password1 !== password2) {
       setMatchError("Passwords do not match!");
       setMatch(false);
       return false;
@@ -24,8 +26,8 @@ const useMatch = (password1) => {
   return {
     match,
     matchError,
-    onChange: ({target}) => {
-      setPassword2(target.value);
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+      setPassword2(event.target.value);
       validate();
     },
     onBlur: () => validate(),

@@ -1,11 +1,9 @@
 import { Button, Card } from "react-bootstrap";
 import { formatCurrency } from "../utils/formatCurrency";
 import { useShoppingCart } from "../content/ShoppingCartContext";
-import addIcon from "/assets/add.png";
-import removeIcon from "/assets/remove.png";
 
 type StoreItemProps = {
-  id?: number;
+  id: number;
   name: string;
   price: number;
   imgUrl: string;
@@ -44,7 +42,7 @@ export default function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
               onClick={() => increaseCartQuantity(id)}
             >
               <img
-                src={addIcon}
+                src="/assets/add.png"
                 alt="add"
                 style={{ width: "14px", height: "14px" }}
               />
@@ -67,7 +65,7 @@ export default function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
                   onClick={() => increaseCartQuantity(id)}
                 >
                   <img
-                    src={addIcon}
+                    src="/assets/add.png"
                     alt="add"
                     style={{ width: "14px", height: "14px" }}
                   />
@@ -87,7 +85,7 @@ export default function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
                   onClick={() => decreaseCartQuantity(id)}
                 >
                   <img
-                    src={removeIcon}
+                    src="/assets/remove.png"
                     alt="add"
                     style={{ width: "14px", height: "14px" }}
                   />

@@ -7,7 +7,6 @@ import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import { SEND_MAIl } from "../Api";
 import {EmailTemplate} from "../templates/EmailTemplate";
-import { CartItemTemplate } from "../templates/CartItemTemplate";
 import { toast } from "react-toastify";
 import { removeLocalStorage } from "../hooks/useLocalStorage";
 

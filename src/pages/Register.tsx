@@ -8,17 +8,18 @@ import { CREATE_USER } from "../Api";
 import useFetch from "../hooks/useFetch";
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
+import { FormEvent } from "react";
 
 
 export default function Register() {
   const email = useForm("email");
   const password1 = useForm("password");
-  const match = useMatch(password1);
+  const match = useMatch(password1.value);
 
   const {request,error} = useFetch();
   const navigate = useNavigate();
   
-  async function handleSubmit (event:Event) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     email.onBlur();
     password1.onBlur();

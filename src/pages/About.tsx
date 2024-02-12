@@ -1,7 +1,3 @@
-import githubLogo from "/assets/github.png";
-import linkedInLogo from "/assets/linkedin.png";
-import perfilPhoto from "/images/perfil.jpg";
-
 export default function About() {
   return (
     <div
@@ -30,7 +26,7 @@ export default function About() {
             backgroundSize: "cover",
             backgroundPosition: "top",
             backgroundRepeat: "no-repeat",
-            backgroundImage: `url(${perfilPhoto})`,
+            backgroundImage: "url(/images/perfil.jpg)",
           }}
         ></div>
         <div className="d-flex flex-column align-items-center" style={{fontWeight:"700"}}>
@@ -43,14 +39,14 @@ export default function About() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={linkedInLogo} alt="github" width={36} height={36} />
+          <img src="/assets/linkedin.png" alt="github" width={36} height={36} />
         </a>
         <a
           href="https://github.com/ocesar9"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={githubLogo} alt="github" width={36} height={36} />
+          <img src="/assets/github.png" alt="github" width={36} height={36} />
         </a>
       </div>
       </div>
