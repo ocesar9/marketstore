@@ -6,7 +6,7 @@
 
 https://marketstore-website.netlify.app/
 
-O projeto consiste num carrinho de compras avançado com recursos como navegação usando o React Router, componentes de IU responsivos com o React Bootstrap e armazenamento de dados persistente usando o LocalStorage. Para autenticação de usuário, ele utiliza bcrypt para hashing de senha seguro, Express para desenvolvimento de API de back-end e CORS para segurança. Além disso, ele incorpora o React Email para criar e enviar e-mails personalizados, potencialmente aproveitando o Resend para gerenciamento de e-mail e rastreamento de entrega.
+O projeto consiste num carrinho de compras avançado com recursos como navegação usando o React Router, componentes de IU responsivos com o React Bootstrap e armazenamento de dados persistente usando o LocalStorage.
 
 ## Layout web
 ![Web 1](https://github.com/ocesar9/marketstore/blob/main/images/marketstore.png)
