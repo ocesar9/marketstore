@@ -23,6 +23,8 @@ O projeto consiste num carrinho de compras avançado com recursos como navegaç�
 - LocalStorage
 ## Implantação em produção
 - Front end web: Netlify
+## Markerstore Server
+https://github.com/ocesar9/marketstore-server
 
 # Autor
 
