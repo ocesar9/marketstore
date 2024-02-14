@@ -1,6 +1,6 @@
-# Moveit 
+# Marketstore 
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/c3saroliveira/moveit/blob/master/LICENSE) 
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/ocesar9/marketstore/blob/main/LICENSE) 
 
 # Sobre o projeto
 
