@@ -1,30 +1,33 @@
-# React + TypeScript + Vite
+# Marketstore 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/ocesar9/marketstore/blob/main/LICENSE) 
 
-Currently, two official plugins are available:
+# Sobre o projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://marketstore-website.netlify.app/
 
-## Expanding the ESLint configuration
+O projeto consiste num carrinho de compras avançado com recursos como navegação usando o React Router, componentes de IU responsivos com o React Bootstrap e armazenamento de dados persistente usando o LocalStorage.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Layout web
+![Web 1](https://github.com/ocesar9/marketstore/blob/main/images/marketstore.png)
 
-- Configure the top-level `parserOptions` property like this:
+![Web 2](https://github.com/ocesar9/marketstore/blob/main/images/marketstore-store.png)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+![Web 3](https://github.com/ocesar9/marketstore/blob/main/images/marketstore-email.png)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Tecnologias utilizadas
+## Front end
+- Typescript
+- React Router
+- React Boostrap
+- LocalStorage
+## Implantação em produção
+- Front end web: Netlify
+## Markerstore Server
+https://github.com/ocesar9/marketstore-server
+
+# Autor
+
+Júlio César de Oliveira Guimarães
+
+https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-de-oliveira-guimar%C3%A3es-183110162/
