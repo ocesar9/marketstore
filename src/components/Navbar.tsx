@@ -8,17 +8,17 @@ export default function Navbar() {
     <NavbarBs sticky="top" className="bg-dark mb-3 p-2">
       <Container className="p-1">
         <Nav>
-            <Nav.Link to="/" as={NavLink} className="d-flex text-white gap-2">
-              <img
-                src="/assets/logo.png"
-                alt="MarketStore Logo"
-                style={{ width: "36px", height: "36px" }}
-              />
-              <span className="fs-4" style={{ fontWeight: "600" }}>
-                MarketStore
-              </span>
-            </Nav.Link>
-          {user.email !== "" && user.password !== "" ? (
+          <Nav.Link to="/" as={NavLink} className="d-flex text-white gap-2">
+            <img
+              src="/assets/logo.png"
+              alt="MarketStore Logo"
+              style={{ width: "36px", height: "36px" }}
+            />
+            <span className="fs-4" style={{ fontWeight: "600" }}>
+              MarketStore
+            </span>
+          </Nav.Link>
+          {user?.email ? (
             <>
               <Nav.Link to="/store" as={NavLink} className="text-white">
                 <span className="fs-4" style={{ fontWeight: "600" }}>
@@ -33,7 +33,7 @@ export default function Navbar() {
             </>
           ) : null}
         </Nav>
-        {user.email !== "" && user.password !== "" ? (
+        {user?.email ? (
           <Button
             style={{
               border: "none",

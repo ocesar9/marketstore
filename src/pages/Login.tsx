@@ -30,7 +30,7 @@ export default function Login() {
 
       const { response, json } = await request(url, options);
       if (response?.ok === true ) {
-        saveUser(email.value, password.value);
+        saveUser(email.value);
         toast.success(json.message);
         navigate("/store");
       } else {
@@ -52,7 +52,7 @@ export default function Login() {
           MarketStore
         </span>
       </div>
-      {user.email !== "" && user.password !== "" ?   
+      {user?.email ?   
       <>
       <div className="d-flex flex-column fs-5 align-items-center" style={{ fontWeight: "700" }}>
         Welcome Back! <br/> 

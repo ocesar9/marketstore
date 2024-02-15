@@ -6,35 +6,32 @@ import { formatCurrency } from "../utils/formatCurrency";
 import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import { SEND_MAIl } from "../Api";
-import {EmailTemplate} from "../templates/EmailTemplate";
+import { EmailTemplate } from "../templates/EmailTemplate";
 import { toast } from "react-toastify";
 import { removeLocalStorage } from "../hooks/useLocalStorage";
 
-
 export default function Payment() {
-  const { cartItems,resetCart, user } = useShoppingCart();
+  const { cartItems, resetCart, user } = useShoppingCart();
   const { request, error } = useFetch();
   const navigate = useNavigate();
   const mail = EmailTemplate();
 
-
   async function handleSendEmail() {
-    const {url, options} = SEND_MAIl({
+    const { url, options } = SEND_MAIl({
       emailFrom: "marketstore@resend.dev",
-      emailTo: user.email,
+      emailTo: user?.email || "",
       subject: "Check all your shopping cart items",
       html: mail,
-    })
-    const {response} = await request(url,options);
-    if (response?.ok === true ) {
+    });
+    const { response } = await request(url, options);
+    if (response?.ok === true) {
       resetCart();
-      removeLocalStorage('shopping-cart');
+      removeLocalStorage("shopping-cart");
       toast.success("Check your MarketStore Order Summary on the email");
-      navigate('/');
-    }else {
+      navigate("/");
+    } else {
       toast.error(error);
     }
-
   }
 
   return (
@@ -76,7 +73,9 @@ export default function Payment() {
         </div>
       ) : (
         <div className="d-flex flex-column align-items-center">
-          <span className="fs-5"  style={{ fontWeight: "700" }}>You don't have any items in your Shopping Cart</span> 
+          <span className="fs-5" style={{ fontWeight: "700" }}>
+            You don't have any items in your Shopping Cart
+          </span>
         </div>
       )}
     </>
